@@ -1,0 +1,9 @@
+node_modules/
+.nyc_output/
+dist/
+demo/
+
+/index.html
+.DS_Store
+*.log
+*.log.*

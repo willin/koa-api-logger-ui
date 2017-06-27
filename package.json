@@ -1,0 +1,31 @@
+{
+  "name": "koa-api-logger-ui",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "cross-env NODE_ENV=development webpack-dev-server --config config/webpack.dev.config.js --open --hot --contentBase dist",
+    "build": "cross-env NODE_ENV=production webpack --progress --config config/webpack.dev.config.js --hide-modules"
+  },
+  "devDependencies": {
+    "babel-core": "^6.25.0",
+    "babel-loader": "^7.1.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-env": "^1.5.2",
+    "cross-env": "^5.0.1",
+    "css-loader": "^0.28.4",
+    "eslint": "^4.1.1",
+    "eslint-config-dwing": "^1.1.0",
+    "eslint-plugin-vue": "^3.0.0",
+    "file-loader": "^0.11.2",
+    "html-webpack-plugin": "^2.29.0",
+    "stylus": "^0.54.5",
+    "stylus-loader": "^3.0.1",
+    "vue": "^2.3.4",
+    "vue-loader": "^12.2.1",
+    "vueify": "^9.4.1",
+    "webpack": "^3.0.0",
+    "webpack-dev-server": "^2.5.0"
+  },
+  "repository": "git@github.com:willin/koa-api-logger-ui.git",
+  "author": "willin <willin@willin.org>",
+  "license": "MIT"
+}
