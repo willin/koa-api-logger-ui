@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack-dev-server --config config/webpack.dev.config.js --open --hot --contentBase dist",
+    "clean": "node -e \"const execSync = require('child_process').execSync; const path = require('path'); const os = require('os'); const cmd = os.platform() === 'win32' ? 'rmdir /s /q ' : 'rm -rf '; execSync(cmd + path.join(path.resolve(path.dirname('')), 'dist'));\"",
     "build": "cross-env NODE_ENV=production webpack --progress --config config/webpack.dev.config.js --hide-modules"
   },
   "devDependencies": {
