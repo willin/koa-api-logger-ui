@@ -3,7 +3,6 @@ node_modules/
 dist/
 demo/
 
-/index.html
 .DS_Store
 *.log
 *.log.*

@@ -1,5 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
   entry: path.resolve(__dirname, '../src/main.js'),
@@ -13,7 +14,10 @@ module.exports = {
     rules: [
       {
         test: /\.vue$/,
-        loader: 'vue-loader'
+        loader: 'vue-loader',
+        options: {
+          extractCSS: true
+        }
       },
       {
         test: /\.js$/,
@@ -39,6 +43,7 @@ module.exports = {
     hints: false
   },
   plugins: [
+    new ExtractTextPlugin('style.css'),
     new HtmlWebpackPlugin({
       filename: path.resolve(__dirname, '../dist/index.html'),
       template: path.resolve(__dirname, '../index.html'),
