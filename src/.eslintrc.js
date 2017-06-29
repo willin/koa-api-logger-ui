@@ -1,8 +1,16 @@
 module.exports = {
   root: true,
+  env: {
+    browser: true,
+    es6: true,
+    node: true
+  },
   extends: [
-    'dwing',
-    'plugin:vue/recommended'
+    'dwing'
+  ],
+  plugins: [
+    'html',
+    'vue'
   ],
   rules: {
     'no-new': 0,

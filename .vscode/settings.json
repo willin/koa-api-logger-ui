@@ -1,0 +1,14 @@
+// 将设置放入此文件中以覆盖默认设置
+{
+  "editor.tabSize": 2,
+  "[vue]": {
+    "editor.formatOnSave": true
+  },
+  "eslint.autoFixOnSave": true,
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+     { "language": "vue", "autoFix": true },
+     { "language": "html", "autoFix": true }
+  ]
+}

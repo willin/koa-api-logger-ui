@@ -22,43 +22,43 @@
         </tr>
       </tbody>
     </table>
-  </div> 
+  </div>
 </template>
 
 <script>
 export default {
   name: 'detail',
-  data () {
+  data() {
     return {
       data: null
-    }
+    };
   },
-  created: function () {
+  created() {
     this.fetchData();
   },
   methods: {
-    fetchData: function () {
-      var xhr = new XMLHttpRequest();
-      var self = this;
-      xhr.open('GET', '/api/' + this.$route.params.app);
+    fetchData() {
+      const xhr = new XMLHttpRequest();
+      const self = this;
+      xhr.open('GET', `/api/${this.$route.params.app}`);
       xhr.onload = function () {
         try {
           self.data = JSON.parse(xhr.responseText);
-        } catch(err) {
+        } catch (err) {
 
         }
-      }
+      };
       xhr.send();
     }
   },
   watch: {
-    '$route' (to, from) {
-      const toDepth = to.path.split('/').length
-      const fromDepth = from.path.split('/').length
-      this.transitionName = toDepth < fromDepth ? 'slide-right' : 'slide-left'
+    $route(to, from) {
+      const toDepth = to.path.split('/').length;
+      const fromDepth = from.path.split('/').length;
+      this.transitionName = toDepth < fromDepth ? 'slide-right' : 'slide-left';
     }
   }
-}
+};
 </script>
 
 <<style lang="stylus">

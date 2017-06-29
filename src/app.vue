@@ -15,41 +15,39 @@
 <script>
 export default {
   name: 'app',
-  data () {
+  data() {
     return {
       transitionName: null,
       apps: null
-    }
+    };
   },
-  created: function () {
+  created() {
     this.fetchData();
   },
   methods: {
-    fetchData: function () {
-      var xhr = new XMLHttpRequest();
-      var self = this;
+    fetchData() {
+      const xhr = new XMLHttpRequest();
+      const self = this;
       xhr.open('GET', '/api/apps');
-      xhr.onload = function () {
+      xhr.onload = () => {
         try {
           self.apps = JSON.parse(xhr.responseText);
-          if(self.$route.path === '/'){
+          if (self.$route.path === '/') {
             self.$router.push(self.apps[0]);
           }
-        } catch(err) {
-
-        }
-      }
+        } catch (err) { }
+      };
       xhr.send();
     }
   },
   watch: {
-    '$route' (to, from) {
+    $route(to, from) {
       const toDepth = to.path.split('/').length;
       const fromDepth = from.path.split('/').length;
       this.transitionName = toDepth < fromDepth ? 'slide-right' : 'slide-left';
     }
   }
-}
+};
 </script>
 
 <style lang="stylus">
