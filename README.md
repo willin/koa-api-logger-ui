@@ -3,7 +3,8 @@
 ## Dev
 
 ```bash
-npm run dev
+npm run dev:client
+npm run dev:server
 ```
 
 ## Build

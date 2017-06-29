@@ -2,9 +2,19 @@
   "name": "koa-api-logger-ui",
   "version": "1.0.0",
   "scripts": {
-    "dev": "cross-env NODE_ENV=development webpack-dev-server --config config/webpack.dev.config.js --open --hot --contentBase dist",
+    "dev:client": "cross-env NODE_ENV=development webpack-dev-server --config config/webpack.dev.config.js --hot --contentBase dist --port 9000",
+    "dev:server": "node lib/dev-server",
     "clean": "node -e \"const execSync = require('child_process').execSync; const path = require('path'); const os = require('os'); const cmd = os.platform() === 'win32' ? 'rmdir /s /q ' : 'rm -rf '; execSync(cmd + path.join(path.resolve(path.dirname('')), 'dist'));\"",
     "build": "cross-env NODE_ENV=production webpack --progress --config config/webpack.dev.config.js --hide-modules"
+  },
+  "dependencies": {
+    "commander": "^2.10.0",
+    "koa": "^2.3.0",
+    "koa-api-logger": "^1.0.3",
+    "koa-router": "^7.2.1",
+    "koa-send": "^4.1.0",
+    "opn": "^5.1.0",
+    "request": "^2.81.0"
   },
   "devDependencies": {
     "babel-core": "^6.25.0",
@@ -24,9 +34,13 @@
     "stylus-loader": "^3.0.1",
     "vue": "^2.3.4",
     "vue-loader": "^12.2.1",
+    "vue-router": "^2.6.0",
     "vueify": "^9.4.1",
     "webpack": "^3.0.0",
     "webpack-dev-server": "^2.5.0"
+  },
+  "engines": {
+    "node": ">= 7.6.0"
   },
   "repository": "git@github.com:willin/koa-api-logger-ui.git",
   "author": "willin <willin@willin.org>",

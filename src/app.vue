@@ -1,8 +1,14 @@
 <template>
-  <div id="app">
-    <img src="./assets/logo.png">
-    <h1></h1>
-    <h2>Essential Links</h2>
+  <div id="main">
+    <h1>Koa-Api-Logger-UI</h1>
+    <ul class="nav">
+      <li v-for="(app, index) in apps" :key="index">
+        <router-link :to="app">{{app}}</router-link>
+      </li>
+    </ul>
+    <transition :name="transitionName">
+      <router-view></router-view>
+    </transition>
   </div>
 </template>
 
@@ -11,7 +17,36 @@ export default {
   name: 'app',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      transitionName: null,
+      apps: null
+    }
+  },
+  created: function () {
+    this.fetchData();
+  },
+  methods: {
+    fetchData: function () {
+      var xhr = new XMLHttpRequest();
+      var self = this;
+      xhr.open('GET', '/api/apps');
+      xhr.onload = function () {
+        try {
+          self.apps = JSON.parse(xhr.responseText);
+          if(self.$route.path === '/'){
+            self.$router.push(self.apps[0]);
+          }
+        } catch(err) {
+
+        }
+      }
+      xhr.send();
+    }
+  },
+  watch: {
+    '$route' (to, from) {
+      const toDepth = to.path.split('/').length;
+      const fromDepth = from.path.split('/').length;
+      this.transitionName = toDepth < fromDepth ? 'slide-right' : 'slide-left';
     }
   }
 }

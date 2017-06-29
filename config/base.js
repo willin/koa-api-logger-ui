@@ -7,8 +7,8 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, '../dist'),
     publicPath: '/',
-    filename: 'js/[name].[hash].js',
-    chunkFilename: 'js/[id].[hash].js'
+    filename: '[name].[hash].js',
+    chunkFilename: '[id].[hash].js'
   },
   module: {
     rules: [
@@ -28,7 +28,7 @@ module.exports = {
         test: /\.(png|jpg|gif|svg)$/,
         loader: 'file-loader',
         options: {
-          name: 'img/[name].[ext]?[hash]'
+          name: '[name].[ext]?[hash]'
         }
       }
     ]
